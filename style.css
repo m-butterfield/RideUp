@@ -1,0 +1,19 @@
+body {
+    background-color: #000000;
+    font: 13.34px helvetica, arial, clean, sans-serif;
+}
+
+#information {
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+#coordinates {
+    text-align: center;
+}
+
+#map-canvas {
+    width: 600px;
+    height: 600px;
+    margin: 0 auto;
+}
