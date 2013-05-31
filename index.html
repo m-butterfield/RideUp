@@ -5,11 +5,16 @@
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHu3tscS1tG243nstn6jiAS9L2kD1OwtQ&sensor=false"></script>
     <script type="text/javascript" src="jquery-2.0.2.min.js"></script>
     <script type="text/javascript" src="rideup.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            console.log('ready');
+        });
+    </script>
     <link rel="stylesheet" href="style.css" type="text/css" />
   </head>
   <body>
     <div id="information">
-        <input type="text" id="coordinates" placeholder="lat/long" />
+        Marker: <input type="text" id="coordinates" readonly="" style="width: 9em;" "placeholder="lat/long" />
     </div>
     <div id="map-canvas"/>
   </body>

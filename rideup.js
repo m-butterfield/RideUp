@@ -7,7 +7,8 @@ function initialize() {
     google.maps.visualRefresh = true;
     var mapOptions = {
         zoom: 14,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        streetViewControl: false
     };
 
     map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
@@ -41,9 +42,17 @@ function initialize() {
     var bikeLayer = new google.maps.BicyclingLayer();
     bikeLayer.setMap(map);
 
+    var marker = new google.maps.Marker({
+        position: map.getCenter(),
+        map: map,
+        title: 'Click to zoom'
+    });
+
     google.maps.event.addListener(map, 'center_changed', function() {
         $("#coordinates").val(map.center.lat().toFixed(4) + "  " + map.center.lng().toFixed(4));
+        marker.setPosition(map.getCenter());
     });
+
 
 }
 
