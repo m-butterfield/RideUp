@@ -1,12 +1,13 @@
 body {
-    background-color: #000000;
+    background-color: #2d8633;
     font: 13.34px helvetica, arial, clean, sans-serif;
+    color: white;
+    text-align: center;
 }
 
-#information {
+.information {
     text-align: center;
-    padding-bottom: 10px;
-    color: white;
+    padding: 10px;
 }
 
 #coordinates {
@@ -14,7 +15,7 @@ body {
 }
 
 #map-canvas {
-    width: 600px;
+    width: 1000px;
     height: 600px;
     margin: 0 auto;
 }
