@@ -24,6 +24,15 @@ body {
     border: 1px solid #999;
 }
 
+input {
+    border: 0px;
+}
+
+*:focus {
+    outline: 0;
+}
+
 #target {
     width: 345px;
+    height: 1.5em;
 }

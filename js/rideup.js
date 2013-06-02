@@ -83,6 +83,7 @@ function initialize() {
         }
 
         map.fitBounds(bounds);
+        map.setZoom(17);
     });
 
     google.maps.event.addListener(map, 'bounds_changed', function() {
