@@ -11,7 +11,7 @@ function initialize() {
         streetViewControl: false
     };
 
-    map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+    map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
 
     // Try W3C Geolocation (Preferred)
     if (navigator.geolocation) {
