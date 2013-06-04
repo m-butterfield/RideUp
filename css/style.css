@@ -25,7 +25,7 @@ body {
 
 #panel {
     position: absolute;
-    top: 15px;
+    top: 9px;
     left: 50%;
     margin-left: -180px;
     z-index: 1;
