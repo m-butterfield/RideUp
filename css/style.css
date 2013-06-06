@@ -35,7 +35,9 @@ body {
 }
 
 #panel input {
-    border: 0px;
+    outline: none;
+    border:none !important;
+    box-shadow:none !important;
     margin-bottom: 0px;
 }
 
