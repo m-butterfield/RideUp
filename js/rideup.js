@@ -53,7 +53,9 @@ function initialize() {
     var markers = [];
 
     google.maps.event.addListener(searchBox, 'places_changed', function() {
-        var places = searchBox.getPlaces();
+        
+        // only want the first place from autocomplete
+        var place = searchBox.getPlaces()[0];
 
         for (var i = 0, marker; marker = markers[i]; i++) {
           marker.setMap(null);
@@ -61,28 +63,28 @@ function initialize() {
 
         markers = [];
         var bounds = new google.maps.LatLngBounds();
-        for (var i = 0, place; place = places[i]; i++) {
-            var image = {
-                url: place.icon,
-                size: new google.maps.Size(71, 71),
-                origin: new google.maps.Point(0, 0),
-                anchor: new google.maps.Point(17, 34),
-                scaledSize: new google.maps.Size(25, 25)
-            };
+        var image = {
+            url: place.icon,
+            size: new google.maps.Size(71, 71),
+            origin: new google.maps.Point(0, 0),
+            anchor: new google.maps.Point(17, 34),
+            scaledSize: new google.maps.Size(25, 25)
+        };
 
-            var marker = new google.maps.Marker({
-                map: map,
-                icon: image,
-                title: place.name,
-                position: place.geometry.location
-            });
+        var marker = new google.maps.Marker({
+            map: map,
+            icon: image,
+            title: place.name,
+            position: place.geometry.location
+        });
 
-            markers.push(marker);
+        markers.push(marker);
 
-            bounds.extend(place.geometry.location);
-        }
+        bounds.extend(place.geometry.location);
 
         map.fitBounds(bounds);
+        map.setZoom(17);
+
     });
 
     google.maps.event.addListener(map, 'bounds_changed', function() {
