@@ -43,17 +43,12 @@ function initialize() {
     var bikeLayer = new google.maps.BicyclingLayer();
     bikeLayer.setMap(map);
 
-//    google.maps.event.addListener(map, 'center_changed', function() {
-//        $("#coordinates").val(map.center.lat().toFixed(4) + "  " + map.center.lng().toFixed(4));
-//        marker.setPosition(map.getCenter());
-//    });
-
     var input = /** @type {HTMLInputElement} */(document.getElementById('target'));
     var searchBox = new google.maps.places.SearchBox(input);
     var markers = [];
 
     google.maps.event.addListener(searchBox, 'places_changed', function() {
-        
+
         // only want the first place from autocomplete
         var place = searchBox.getPlaces()[0];
 
@@ -96,3 +91,4 @@ function initialize() {
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
+

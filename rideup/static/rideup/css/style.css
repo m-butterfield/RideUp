@@ -9,12 +9,12 @@ body {
 }
 
 #map_canvas {
-  height: 100%;
+    height: 100%;
 }
 
 #map_canvas img{
- max-width: none;
- }
+    max-width: none;
+}
 
 #map {
     position: relative;
@@ -39,10 +39,6 @@ body {
     border:none !important;
     box-shadow:none !important;
     margin-bottom: 0px;
-}
-
-*:focus {
-    outline: 0;
 }
 
 #target {
