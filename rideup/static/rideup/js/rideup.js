@@ -59,11 +59,11 @@ function initialize() {
         markers = [];
         var bounds = new google.maps.LatLngBounds();
         var image = {
-            url: place.icon,
-            size: new google.maps.Size(71, 71),
+            url: '/static/rideup/img/blue-bike.gif',
+            size: new google.maps.Size(70, 70),
             origin: new google.maps.Point(0, 0),
-            anchor: new google.maps.Point(17, 34),
-            scaledSize: new google.maps.Size(25, 25)
+            anchor: new google.maps.Point(35, 70),
+            scaledSize: new google.maps.Size(70, 70)
         };
 
         var marker = new google.maps.Marker({
