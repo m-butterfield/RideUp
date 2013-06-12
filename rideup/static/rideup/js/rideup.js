@@ -1,7 +1,7 @@
 var initialLocation;
 var cleveland = new google.maps.LatLng(41.49917035057174, -81.69371168017138);
 var browserSupportFlag = new Boolean();
-var map
+var map;
 
 function initialize() {
     google.maps.visualRefresh = true;
