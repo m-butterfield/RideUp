@@ -1,7 +1,14 @@
+{% extends "rideup/base.html" %}
 {% load staticfiles %}
+
+{% block head %}
+<title>RideUp</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="{% static 'rideup/css/bootstrap.min.css' %}" media="screen">
 <link rel="stylesheet" href="{% static 'rideup/css/style.css' %}" type="text/css" />
+{% endblock %}
 
+{% block content %}
 <div class="container">
     <br />
     <div class="hero-unit">
@@ -53,7 +60,12 @@
     <br />
 </div>
 
+{% endblock %}
+
+{% block foot %}
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHu3tscS1tG243nstn6jiAS9L2kD1OwtQ&libraries=places&sensor=false"></script>
 <script type="text/javascript" src="{% static 'rideup/js/jquery-1.9.1.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'rideup/js/rideup.js' %}"></script>
 <script type="text/javascript" src="{% static 'rideup/js/bootstrap.min.js' %}"></script>
+{% endblock %}
+
