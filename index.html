@@ -13,23 +13,35 @@
         </p>
         -->
     <div class="container">
-        <div class="row">
-            <div class="span4">
-                <h2>Box Number 1</h2>
-                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                <p><a class="btn" href="#">Click meeee</a></p>
-            </div>
-            <div class="span4">
-                <h2>Box Number 2</h2>
-                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                <p><a class="btn" href="#">Click meeee</a></p>
-            </div>
-            <div class="span4">
-                <h2>Box Number 3</h2>
-                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                <p><a class="btn" href="#">Click meeee</a></p>
-            </div><!-- .span4 -->
-        </div><!-- .row -->
+        <br />
+        <div class="hero-unit">
+            <form class="form-horizontal">
+                <div class="control-group">
+                    <label class="control-label">Place name:</label>
+                    <div class="controls">
+                        <input type="text"
+                               id="place-name"
+                               placeholder="Name of the place you want to meet"
+                               style="width:345px">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Address:</label>
+                    <div class="controls">
+                        <input type="text"
+                               id="place-address"
+                               placeholder="Use the searchbox on the map to find a place to ride!"
+                               style="width:345px"
+                               readonly>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="controls">
+                        <button type="submit" class="btn">Submit your ride!</button>
+                    </div>
+                </div>
+            </form>
+        </div>
         <div id="map">
             <div id="panel">
                 <input id="target" type="text" placeholder="Search for a place to start your ride">

@@ -58,7 +58,7 @@ function initialize() {
         var place = searchBox.getPlaces()[0];
 
         for (var i = 0, marker; marker = markers[i]; i++) {
-          marker.setMap(null);
+            marker.setMap(null);
         }
 
         markers = [];
@@ -84,7 +84,8 @@ function initialize() {
 
         map.fitBounds(bounds);
         map.setZoom(17);
-
+        $("#place-name").val(place.name);
+        $("#place-address").val(place.formatted_address);
     });
 
     google.maps.event.addListener(map, 'bounds_changed', function() {
