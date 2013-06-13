@@ -9,6 +9,14 @@
 
 {% block content %}
 <div class="container">
+    <h2>Create a ride:</h2>
+    <div id="map">
+        <div id="panel">
+            <input id="target" type="text" placeholder="Search for a place to start your ride">
+        </div>
+        <div id="map_canvas"></div>
+    </div>
+
     <div class="hero-unit">
         <form class="form-horizontal">
             <div class="control-group">
@@ -47,15 +55,7 @@
             </div>
         </form>
     </div>
-    <div id="map">
-        <div id="panel">
-            <input id="target" type="text" placeholder="Search for a place to start your ride">
-        </div>
-        <div id="map_canvas"></div>
-    </div>
-    <br />
-    <a href="{% url 'index' %}">Back home</a>
-    <br />
+
 </div>
 
 {% endblock %}
