@@ -3,28 +3,26 @@
 
 {% block head %}
 <title>RideUp - Create a ride</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="{% static 'rideup/css/bootstrap.min.css' %}" media="screen">
 <link rel="stylesheet" href="{% static 'rideup/css/style.css' %}" type="text/css" />
 {% endblock %}
 
 {% block content %}
 <div class="container">
-    <h2>Create a ride:</h2>
     <div id="map">
         <div id="panel">
             <input id="target" type="text" placeholder="Search for a place to start your ride">
         </div>
         <div id="map_canvas"></div>
     </div>
-
-    <div class="hero-unit">
+    <div class="offset3">
+        <h2>Create a ride!</h2>
+        <h3>(Search on the map for a place to ride)</h3>
         <form class="form-horizontal">
             <div class="control-group">
                 <label class="control-label">Place name:</label>
                 <div class="controls">
-                    <input type="text"
-                           id="place-name"
+                    <input type="text" id="place-name"
                            placeholder="Name of the place you want to meet"
                            style="width:345px"
                            readonly>
@@ -33,11 +31,9 @@
             <div class="control-group">
                 <label class="control-label">Address:</label>
                 <div class="controls">
-                    <input type="text"
-                           id="place-address"
+                    <input type="text" id="place-address"
                            placeholder="Use the searchbox on the map to find a place to ride!"
-                           style="width:345px"
-                           readonly>
+                           style="width:345px" readonly>
                 </div>
             </div>
             <div class="control-group">
@@ -66,5 +62,9 @@
 <script type="text/javascript" src="{% static 'rideup/js/jquery-1.9.1.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'rideup/js/rideup.js' %}"></script>
 <script type="text/javascript" src="{% static 'rideup/js/bootstrap.min.js' %}"></script>
+<script>
+    $(document).ready(function() {
+        $("#create-link").parent().addClass('active');
+    });
+</script>
 {% endblock %}
-

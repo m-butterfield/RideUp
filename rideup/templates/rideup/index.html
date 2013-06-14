@@ -17,6 +17,10 @@
 {% block foot %}
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHu3tscS1tG243nstn6jiAS9L2kD1OwtQ&libraries=places&sensor=false"></script>
 <script type="text/javascript" src="{% static 'rideup/js/jquery-1.9.1.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'rideup/js/rideup.js' %}"></script>
 <script type="text/javascript" src="{% static 'rideup/js/bootstrap.min.js' %}"></script>
+<script>
+    $(document).ready(function() {
+        $("#home-link").parent().addClass('active');
+    });
+</script>
 {% endblock %}
