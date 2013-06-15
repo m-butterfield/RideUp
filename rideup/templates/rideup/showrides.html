@@ -1,0 +1,35 @@
+{% extends "rideup/base.html" %}
+{% load staticfiles %}
+
+{% block head %}
+<title>Contact</title>
+<link rel="stylesheet" href="{% static 'rideup/css/bootstrap.min.css' %}" media="screen">
+<link rel="stylesheet" href="{% static 'rideup/css/style.css' %}" type="text/css" />
+{% endblock %}
+
+{% block content %}
+<div class="container">
+
+    {% if all_rides %}
+        <ul>
+        {% for ride in all_rides %}
+            {{ ride }}
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No Rides have been created.</p>
+    {% endif %}
+
+</div>
+
+{% endblock %}
+
+{% block foot %}
+<script type="text/javascript" src="{% static 'rideup/js/jquery-1.9.1.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'rideup/js/bootstrap.min.js' %}"></script>
+<script>
+    $(document).ready(function() {
+        $("#showrides-link").parent().addClass('active');
+    });
+</script>
+{% endblock %}

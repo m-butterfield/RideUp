@@ -9,48 +9,49 @@
 
 {% block content %}
 <div class="container">
+
+    <h2>Create a ride!</h2>
+    <h3>(Search on the map for a place to ride)</h3>
+
+    <form class="form-horizontal" action="/rideup/create/" method="post">{% csrf_token %}
+        <div class="control-group">
+            <label class="control-label">Place name:</label>
+            <div class="controls">
+                <input type="text" id="id_name"
+                       placeholder="Name of the place you want to meet"
+                       style="width:345px"
+                       readonly>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">Address:</label>
+            <div class="controls">
+                <input type="text" id="id_address"
+                       placeholder="Use the searchbox on the map to find a place to ride!"
+                       style="width:345px" readonly>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">Description:</label>
+            <div class="controls">
+                <textarea id="id_description"
+                          placeholder="Enter a description (route, destination, speed, etc...)"
+                          style="width:345px"
+                          rows="2"></textarea>
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="controls">
+                <button type="submit" class="btn">Submit your ride!</button>
+            </div>
+        </div>
+    </form>
+
     <div id="map">
         <div id="panel">
             <input id="target" type="text" placeholder="Search for a place to start your ride">
         </div>
         <div id="map_canvas"></div>
-    </div>
-    <div class="offset3">
-        <h2>Create a ride!</h2>
-        <h3>(Search on the map for a place to ride)</h3>
-        <form class="form-horizontal">
-            <div class="control-group">
-                <label class="control-label">Place name:</label>
-                <div class="controls">
-                    <input type="text" id="place-name"
-                           placeholder="Name of the place you want to meet"
-                           style="width:345px"
-                           readonly>
-                </div>
-            </div>
-            <div class="control-group">
-                <label class="control-label">Address:</label>
-                <div class="controls">
-                    <input type="text" id="place-address"
-                           placeholder="Use the searchbox on the map to find a place to ride!"
-                           style="width:345px" readonly>
-                </div>
-            </div>
-            <div class="control-group">
-                <label class="control-label">Description:</label>
-                <div class="controls">
-                    <textarea id="description"
-                              placeholder="Enter a description (route, destination, speed, etc...)"
-                              style="width:345px"
-                              rows="2"></textarea>
-                </div>
-            </div>
-            <div class="control-group">
-                <div class="controls">
-                    <button type="submit" class="btn">Submit your ride!</button>
-                </div>
-            </div>
-        </form>
     </div>
 
 </div>

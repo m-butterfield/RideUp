@@ -1,4 +1,5 @@
 from django.db import models
+from django.forms import ModelForm
 
 class Ride(models.Model):
     name = models.CharField(max_length=200)
@@ -9,3 +10,7 @@ class Ride(models.Model):
 
     def __unicode__(self):
         return self.address
+
+class CreateRideForm(ModelForm):
+    class Meta:
+        model = Ride

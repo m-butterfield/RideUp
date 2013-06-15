@@ -5,7 +5,7 @@
         <link href="/static/rideup/img/favicon.ico" rel="icon" type="image/x-icon">
     </head>
     <body>
-        <div class="navbar navbar-fixed-top">
+        <div class="navbar navbar-static-top">
             <div class="navbar-inner">
                 <div class="container">
                     <a class="brand" href="{% url 'index' %}">Welcome to RideUp</a>
@@ -13,6 +13,7 @@
                         <ul class="nav">
                             <li><a href="{% url 'index' %}" id="home-link">Home</a></li>
                             <li><a href="{% url 'create' %}" id="create-link">Create a Ride!</a></li>
+                            <li><a href="{% url 'showrides' %}" id="showrides-link">Show Rides</a></li>
                         </ul>
                     </div>
                 </div>
