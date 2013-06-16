@@ -79,8 +79,8 @@ function initialize() {
 
         map.fitBounds(bounds);
         map.setZoom(17);
-        $("#place-name").val(place.name);
-        $("#place-address").val(place.formatted_address);
+        $("#id_name").val(place.name);
+        $("#id_address").val(place.formatted_address);
     });
 
     google.maps.event.addListener(map, 'bounds_changed', function() {
@@ -91,4 +91,3 @@ function initialize() {
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
-
