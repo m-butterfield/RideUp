@@ -14,4 +14,3 @@ class Ride(models.Model):
 class CreateRideForm(ModelForm):
     class Meta:
         model = Ride
-        fields = ['name', 'address', 'description']

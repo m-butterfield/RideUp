@@ -9,17 +9,23 @@
 
 {% block content %}
 <div class="container">
-
-    {% if all_rides %}
-        <ul>
-        {% for ride in all_rides %}
-            {{ ride }}
-        {% endfor %}
-        </ul>
-    {% else %}
-        <p>No Rides have been created.</p>
-    {% endif %}
-
+    <div style="margin-top: 20px;">
+        {% if all_rides %}
+            <ul>
+            {% for ride in all_rides %}
+                <ul style="margin-bottom: 20px;">
+                    <li>{{ ride.name }}</li>
+                    <li>{{ ride.address }}</li>
+                    <li>{{ ride.created_date }}</li>
+                    <li>{{ ride.ride_time }}</li>
+                    <li>{{ ride.description }}</li>
+                </ul>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>No Rides have been created.</p>
+        {% endif %}
+    </div>
 </div>
 
 {% endblock %}
