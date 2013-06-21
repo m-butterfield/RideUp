@@ -13,7 +13,8 @@
     <h2>Create a ride!</h2>
     <h3>(Search on the map for a place to ride)</h3>
 
-    <form class="form-horizontal" action="/rideup/create/" method="post">{% csrf_token %}
+    <form class="form-horizontal" action="{% url 'create' %}" method="post" id="create-form">
+    {% csrf_token %}
         <div class="control-group">
             <label class="control-label">Place name:</label>
             <div class="controls">
@@ -35,7 +36,7 @@
             <div class="controls">
                 <textarea id="id_description" name="description"
                           placeholder="Enter a description (route, destination, speed, etc...)"
-                          style="width:345px" rows="2"></textarea>
+                          style="width:345px" rows="3"></textarea>
             </div>
         </div>
         <div class="control-group">
@@ -57,13 +58,19 @@
 {% endblock %}
 
 {% block foot %}
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHu3tscS1tG243nstn6jiAS9L2kD1OwtQ&libraries=places&sensor=false"></script>
 <script type="text/javascript" src="{% static 'rideup/js/jquery-1.9.1.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'rideup/js/rideup.js' %}"></script>
-<script type="text/javascript" src="{% static 'rideup/js/bootstrap.min.js' %}"></script>
 <script>
     $(document).ready(function() {
         $("#create-link").parent().addClass('active');
+        $("#id_description").on("keypress", function(key) {
+            if (key.which === 13) {
+                key.preventDefault();
+                $("#create-form").submit();
+            }
+        });
     });
 </script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHu3tscS1tG243nstn6jiAS9L2kD1OwtQ&libraries=places&sensor=false"></script>
+<script type="text/javascript" src="{% static 'rideup/js/rideup.js' %}"></script>
+<script type="text/javascript" src="{% static 'rideup/js/bootstrap.min.js' %}"></script>
 {% endblock %}

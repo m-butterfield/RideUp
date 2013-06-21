@@ -9,18 +9,45 @@
 
 {% block content %}
 <div class="container">
-    <h1>Welcome!</h1>
+    <h2>Welcome!</h2>
+    {% if user.is_authenticated %}
+        <h3>Hello, {{ user.username }}! You are logged in and ready to create a ride!</h3>
+        <a href="{% url 'logout' %}" class="btn">Logout</a>
+    {% else %}
+        <h3>Please log in:</h3>
+        <form class="form-horizontal" action="{% url 'login' %}" method="post" id="login-form">
+        {% csrf_token %}
+            <div class="control-group">
+                <label class="control-label">User name:</label>
+                <div class="controls">
+                    <input type="text" id="id_username" name="username"
+                           placeholder="username">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Password:</label>
+                <div class="controls">
+                    <input type="password" id="id_password" name="password"
+                           placeholder="password">
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    <button type="submit" class="btn">Login</button>
+                </div>
+            </div>
+        </form>
+    {% endif %}
 </div>
 
 {% endblock %}
 
 {% block foot %}
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHu3tscS1tG243nstn6jiAS9L2kD1OwtQ&libraries=places&sensor=false"></script>
 <script type="text/javascript" src="{% static 'rideup/js/jquery-1.9.1.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'rideup/js/bootstrap.min.js' %}"></script>
 <script>
     $(document).ready(function() {
         $("#home-link").parent().addClass('active');
     });
 </script>
+<script type="text/javascript" src="{% static 'rideup/js/bootstrap.min.js' %}"></script>
 {% endblock %}

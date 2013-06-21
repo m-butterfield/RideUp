@@ -9,19 +9,17 @@
 
 {% block content %}
 <div class="container">
+    <h2>Current Rides:</h2>
     <div style="margin-top: 20px;">
         {% if all_rides %}
-            <ul>
             {% for ride in all_rides %}
                 <ul style="margin-bottom: 20px;">
-                    <li>{{ ride.name }}</li>
+                    <li><strong>Place Name: </strong>{{ ride.name }}</li>
                     <li>{{ ride.address }}</li>
-                    <li>{{ ride.created_date }}</li>
                     <li>{{ ride.ride_time }}</li>
                     <li>{{ ride.description }}</li>
                 </ul>
             {% endfor %}
-            </ul>
         {% else %}
             <p>No Rides have been created.</p>
         {% endif %}
@@ -32,10 +30,10 @@
 
 {% block foot %}
 <script type="text/javascript" src="{% static 'rideup/js/jquery-1.9.1.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'rideup/js/bootstrap.min.js' %}"></script>
 <script>
     $(document).ready(function() {
         $("#showrides-link").parent().addClass('active');
     });
 </script>
+<script type="text/javascript" src="{% static 'rideup/js/bootstrap.min.js' %}"></script>
 {% endblock %}

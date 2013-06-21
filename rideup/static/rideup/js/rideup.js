@@ -59,7 +59,7 @@ function initialize() {
         markers = [];
         var bounds = new google.maps.LatLngBounds();
         var image = {
-            url: '/static/rideup/img/blue-bike.gif',
+            url: '/static/rideup/img/green-bike.gif',
             size: new google.maps.Size(70, 70),
             origin: new google.maps.Point(0, 0),
             anchor: new google.maps.Point(35, 70),

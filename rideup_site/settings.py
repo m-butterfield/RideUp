@@ -117,7 +117,7 @@ INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.staticfiles',
-    #'django.contrib.sessions',
+    'django.contrib.sessions',
     #'django.contrib.sites',
     #'django.contrib.messages',
     # Uncomment the next line to enable the admin:
@@ -154,3 +154,6 @@ LOGGING = {
         },
     }
 }
+
+LOGIN_URL = '/rideup/'
+LOGIN_REDIRECT_URL = '/rideup/'

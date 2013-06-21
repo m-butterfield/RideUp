@@ -1,12 +1,15 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
-from rideup.models import Ride, CreateRideForm
 from django.utils import timezone
+from django.contrib.auth.decorators import login_required
+from rideup.models import Ride, CreateRideForm
+
 import datetime
 
 def index(request):
     return render(request, 'rideup/index.html')
 
+@login_required
 def create(request):
     if request.method == 'POST':
         form = CreateRideForm(request.POST.copy())
@@ -19,7 +22,7 @@ def create(request):
             return HttpResponseRedirect('')
     else:
         form = CreateRideForm()
-    return render(request, 'rideup/create.html', { 'form' : form, })
+    return render(request, 'rideup/create.html', {'form' : form})
 
 
 def showrides(request):
