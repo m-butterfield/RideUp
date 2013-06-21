@@ -63,8 +63,7 @@
     $(document).ready(function() {
         $("#create-link").parent().addClass('active');
         $("#id_description").on("keypress", function(key) {
-            if (key.which === 13) {
-                key.preventDefault();
+            if ((key.which == 10 || key.which === 13) && key.ctrlKey) {
                 $("#create-form").submit();
             }
         });
