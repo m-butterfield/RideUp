@@ -1,10 +1,11 @@
 from django.shortcuts import render
-from django.http import HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
+from django.core import serializers
 from rideup.models import Ride, CreateRideForm
 
-import datetime
+import datetime, json
 
 def index(request):
     return render(request, 'rideup/index.html')
@@ -26,5 +27,27 @@ def create(request):
 
 
 def showrides(request):
-    all_rides = Ride.objects.all()
-    return render(request, 'rideup/showrides.html', {'all_rides': all_rides})
+    return render(request, 'rideup/showrides.html')
+
+def get_map_rides(request):
+    if request.is_ajax():
+        northeastLat = request.GET['northeastLat']
+        northeastLng = request.GET['northeastLng']
+        southwestLat = request.GET['southwestLat']
+        southwestLng = request.GET['southwestLng']
+
+        qry = """
+            select * from rideup_ride
+            where lat < %s
+                and lng < %s
+                and lat > %s
+                and lng > %s
+            """ % (northeastLat, northeastLng, southwestLat, southwestLng)
+
+        response = serializers.serialize('json', Ride.objects.raw(qry))
+        response = json.loads(response)
+
+        return HttpResponse(json.dumps(response),
+                            mimetype='application/json')
+    else:
+        return HttpResponse()
