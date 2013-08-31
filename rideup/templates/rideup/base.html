@@ -1,7 +1,10 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html>
     <head>
         {% block head %}{% endblock %}
+        <link rel="stylesheet" href="{% static 'rideup/css/bootstrap.min.css' %}" media="screen">
+        <link rel="stylesheet" href="{% static 'rideup/css/style.css' %}" type="text/css" />
         <link href="/static/rideup/img/favicon.ico" rel="icon" type="image/x-icon">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
@@ -21,6 +24,8 @@
             </div>
         </nav>
         {% block content %}{% endblock %}
+        <script type="text/javascript" src="{% static 'rideup/js/jquery.js' %}"></script>
+        <script type="text/javascript" src="{% static 'rideup/js/bootstrap.min.js' %}"></script>
         {% block foot %}{% endblock %}
     </body>
 </html>

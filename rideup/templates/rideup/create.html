@@ -3,8 +3,6 @@
 
 {% block head %}
 <title>RideUp - Create a ride</title>
-<link rel="stylesheet" href="{% static 'rideup/css/bootstrap.min.css' %}" media="screen">
-<link rel="stylesheet" href="{% static 'rideup/css/style.css' %}" type="text/css" />
 {% endblock %}
 
 {% block content %}
@@ -51,7 +49,6 @@
 {% endblock %}
 
 {% block foot %}
-<script type="text/javascript" src="{% static 'rideup/js/jquery.js' %}"></script>
 <script>
     $(document).ready(function() {
         $("#create-link").parent().addClass('active');
@@ -64,5 +61,4 @@
 </script>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHu3tscS1tG243nstn6jiAS9L2kD1OwtQ&libraries=places&sensor=false"></script>
 <script type="text/javascript" src="{% static 'rideup/js/rideup.js' %}"></script>
-<script type="text/javascript" src="{% static 'rideup/js/bootstrap.min.js' %}"></script>
 {% endblock %}

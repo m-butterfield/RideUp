@@ -3,8 +3,6 @@
 
 {% block head %}
 <title>Show Rides</title>
-<link rel="stylesheet" href="{% static 'rideup/css/bootstrap.min.css' %}" media="screen">
-<link rel="stylesheet" href="{% static 'rideup/css/style.css' %}" type="text/css" />
 {% endblock %}
 
 {% block content %}
@@ -29,11 +27,9 @@
 {% endblock %}
 
 {% block foot %}
-<script type="text/javascript" src="{% static 'rideup/js/jquery.js' %}"></script>
 <script>
     $(document).ready(function() {
         $("#showrides-link").parent().addClass('active');
     });
 </script>
-<script type="text/javascript" src="{% static 'rideup/js/bootstrap.min.js' %}"></script>
 {% endblock %}
