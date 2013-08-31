@@ -7,6 +7,8 @@ class Ride(models.Model):
     created_date = models.DateTimeField()
     ride_time = models.DateTimeField()
     description = models.CharField(max_length=500)
+    lat = models.DecimalField(max_digits=11, decimal_places=8)
+    lng = models.DecimalField(max_digits=11, decimal_places=8)
 
     def __unicode__(self):
         return self.address

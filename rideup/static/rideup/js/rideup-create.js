@@ -79,6 +79,8 @@ function initialize() {
 
         map.fitBounds(bounds);
         map.setZoom(17);
+        $("#id_lat").val(place.geometry.location.lat());
+        $("#id_lng").val(place.geometry.location.lng());
         $("#id_name").val(place.name);
         $("#id_address").val(place.formatted_address);
     });
