@@ -12,30 +12,34 @@
 </script>
 <div class="container">
     <h2>Current Rides:</h2>
-    <div style="margin-top: 20px;">
-        {% if all_rides %}
-            {% for ride in all_rides %}
-                <ul style="margin-bottom: 20px;">
-                    <li><strong>Place Name: </strong>{{ ride.name }}</li>
-                    <li>{{ ride.address }}</li>
-                    <li>{{ ride.ride_time }}</li>
-                    <li>{{ ride.description }}</li>
-                    <li>lat: {{ ride.lat }}</li>
-                    <li>lng: {{ ride.lng }}</li>
-                </ul>
-                <script type="text/javascript">
-                    Rideup.rides.push([ {{ ride.lat }} , {{ ride.lng }} ])
-                </script>
-            {% endfor %}
-        {% else %}
-            <p>No Rides have been created.</p>
-        {% endif %}
+    <div class="row">
+        <div class="col-md-4" style="height:600px; overflow:auto;">
+            <div>
+                {% if all_rides %}
+                    {% for ride in all_rides %}
+                        <ul style="margin-bottom: 20px;">
+                            <li><strong>Place Name: </strong>{{ ride.name }}</li>
+                            <li>{{ ride.address }}</li>
+                            <li>{{ ride.ride_time }}</li>
+                            <li>{{ ride.description }}</li>
+                            <li>lat: {{ ride.lat }}</li>
+                            <li>lng: {{ ride.lng }}</li>
+                        </ul>
+                        <script type="text/javascript">
+                            Rideup.rides.push([ {{ ride.lat }} , {{ ride.lng }} ])
+                        </script>
+                    {% endfor %}
+                {% else %}
+                    <p>No Rides have been created.</p>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div id="map" style="margin-top:0px;">
+                <div id="map_canvas"></div>
+            </div>
+        </div>
     </div>
-
-    <div id="map">
-        <div id="map_canvas"></div>
-    </div>
-
 </div>
 
 {% endblock %}
