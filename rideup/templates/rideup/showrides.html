@@ -2,7 +2,7 @@
 {% load staticfiles %}
 
 {% block head %}
-<title>Contact</title>
+<title>Show Rides</title>
 <link rel="stylesheet" href="{% static 'rideup/css/bootstrap.min.css' %}" media="screen">
 <link rel="stylesheet" href="{% static 'rideup/css/style.css' %}" type="text/css" />
 {% endblock %}
@@ -29,7 +29,7 @@
 {% endblock %}
 
 {% block foot %}
-<script type="text/javascript" src="{% static 'rideup/js/jquery-1.9.1.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'rideup/js/jquery.js' %}"></script>
 <script>
     $(document).ready(function() {
         $("#showrides-link").parent().addClass('active');

@@ -13,37 +13,30 @@
     <h2>Create a ride!</h2>
     <h3>(Search on the map for a place to ride)</h3>
 
-    <form class="form-horizontal" action="{% url 'create' %}" method="post" id="create-form">
+    <form action="{% url 'create' %}" method="post" id="create-form">
     {% csrf_token %}
-        <div class="control-group">
-            <label class="control-label">Place name:</label>
-            <div class="controls">
-                <input type="text" id="id_name" name="name"
-                       placeholder="Name of the place you want to meet"
-                       style="width:345px" readonly>
-            </div>
+        <div class="form-group">
+            <label>Place name:</label>
+            <input type="text" id="id_name" name="name"
+                   placeholder="Name of the place you want to meet"
+                   class="form-control"
+                   style="width:345px" readonly>
         </div>
-        <div class="control-group">
+        <div class="form-group">
             <label class="control-label">Address:</label>
-            <div class="controls">
-                <input type="text" id="id_address" name="address"
-                       placeholder="Use the searchbox on the map to find a place to ride!"
-                       style="width:345px" readonly>
-            </div>
+            <input type="text" id="id_address" name="address"
+                   placeholder="Use the searchbox on the map to find a place to ride!"
+                   class="form-control"
+                   style="width:345px" readonly>
         </div>
-        <div class="control-group">
+        <div class="form-group">
             <label class="control-label">Description:</label>
-            <div class="controls">
-                <textarea id="id_description" name="description"
-                          placeholder="Enter a description (route, destination, speed, etc...)"
-                          style="width:345px" rows="3"></textarea>
-            </div>
+            <textarea id="id_description" name="description"
+                      class="form-control"
+                      placeholder="Enter a description (route, destination, speed, etc...)"
+                      style="width:345px" rows="3"></textarea>
         </div>
-        <div class="control-group">
-            <div class="controls">
-                <button type="submit" class="btn">Submit your ride!</button>
-            </div>
-        </div>
+        <button type="submit" class="btn">Submit your ride!</button>
     </form>
 
     <div id="map">
@@ -58,7 +51,7 @@
 {% endblock %}
 
 {% block foot %}
-<script type="text/javascript" src="{% static 'rideup/js/jquery-1.9.1.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'rideup/js/jquery.js' %}"></script>
 <script>
     $(document).ready(function() {
         $("#create-link").parent().addClass('active');

@@ -3,22 +3,23 @@
     <head>
         {% block head %}{% endblock %}
         <link href="/static/rideup/img/favicon.ico" rel="icon" type="image/x-icon">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <div class="navbar navbar-static-top">
-            <div class="navbar-inner">
-                <div class="container">
-                    <a class="brand" href="{% url 'index' %}">Welcome to RideUp</a>
-                    <div class="nav-collapse">
-                        <ul class="nav">
-                            <li><a href="{% url 'index' %}" id="home-link">Home</a></li>
-                            <li><a href="{% url 'create' %}" id="create-link">Create a Ride!</a></li>
-                            <li><a href="{% url 'showrides' %}" id="showrides-link">Show Rides</a></li>
-                        </ul>
-                    </div>
-                </div>
+	    <nav class="navbar navbar-default" role="navigation">
+	        <div class="container">
+	            <div class="navbar-header">
+	                <a class="navbar-brand" href="#">Rideup</a>
+	            </div>
+	            <div class="collapse navbar-collapse navbar-ex1-collapse">
+	                <ul class="nav navbar-nav">
+	                  <li><a id="home-link" href="{% url 'index' %}">Home</a></li>
+	                  <li><a id="create-link" href="{% url 'create' %}">Create a Ride!</a></li>
+	                  <li><a id="showrides-link" href="{% url 'showrides' %}">Show Rides</a></li>
+	                </ul>
+	            </div>
             </div>
-        </div>
+        </nav>
         {% block content %}{% endblock %}
         {% block foot %}{% endblock %}
     </body>

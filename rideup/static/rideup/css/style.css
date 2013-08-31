@@ -22,6 +22,7 @@ body {
     height: 600px;
     margin: 0 auto;
     padding-bottom: 30px;
+    margin-top:15px;
 }
 
 #panel {
@@ -45,13 +46,4 @@ body {
 #target {
     width: 345px;
     height: 1.5em;
-}
-
-.form-horizontal .control-label {
-    text-align:left;
-    width: 120px;
-}
-
-.form-horizontal .controls {
-    margin-left: 120px;
 }
