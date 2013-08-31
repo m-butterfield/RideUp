@@ -6,6 +6,10 @@
 {% endblock %}
 
 {% block content %}
+<script type="text/javascript">
+    var Rideup = {};
+    Rideup.rides = [];
+</script>
 <div class="container">
     <h2>Current Rides:</h2>
     <div style="margin-top: 20px;">
@@ -19,11 +23,19 @@
                     <li>lat: {{ ride.lat }}</li>
                     <li>lng: {{ ride.lng }}</li>
                 </ul>
+                <script type="text/javascript">
+                    Rideup.rides.push([ {{ ride.lat }} , {{ ride.lng }} ])
+                </script>
             {% endfor %}
         {% else %}
             <p>No Rides have been created.</p>
         {% endif %}
     </div>
+
+    <div id="map">
+        <div id="map_canvas"></div>
+    </div>
+
 </div>
 
 {% endblock %}
@@ -34,4 +46,6 @@
         $("#showrides-link").parent().addClass('active');
     });
 </script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHu3tscS1tG243nstn6jiAS9L2kD1OwtQ&libraries=places&sensor=false"></script>
+<script type="text/javascript" src="{% static 'rideup/js/rideup-show.js' %}"></script>
 {% endblock %}
