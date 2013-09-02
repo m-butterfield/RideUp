@@ -18,7 +18,7 @@ def create(request):
         form.data['ride_time'] = timezone.now() + datetime.timedelta(days=1)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect('/rideup/showrides/')
+            return HttpResponseRedirect('/showrides/')
         else:
             return HttpResponseRedirect('')
     else:
