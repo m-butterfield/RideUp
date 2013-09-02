@@ -155,5 +155,5 @@ LOGGING = {
     }
 }
 
-LOGIN_URL = '/rideup/'
-LOGIN_REDIRECT_URL = '/rideup/'
+LOGIN_URL = '/'
+LOGIN_REDIRECT_URL = '/'

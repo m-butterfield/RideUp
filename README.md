@@ -21,5 +21,5 @@ Follow the prompts to create a superuser, then run:
 
     $ python manage.py runserver
 
-Then point a browser to: [http://localhost:8000/rideup/](http://localhost:8000/rideup/) And you are ready to go!
+Then point a browser to: [http://localhost:8000](http://localhost:8000) And you are ready to go!
 
