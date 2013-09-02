@@ -10,5 +10,5 @@ urlpatterns = patterns('',
     url(r'^login/$', 'django.contrib.auth.views.login',
         {'template_name': 'rideup/index.html'}, name='login'),
     url(r'^logout/$', 'django.contrib.auth.views.logout',
-        {'next_page': '/rideup/'}, name='logout'),
+        {'next_page': '/'}, name='logout'),
 )
