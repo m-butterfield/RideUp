@@ -5,5 +5,5 @@
 *.swp
 .settings/
 unused/
-settings.py
+rideup_site/settings.py
 
