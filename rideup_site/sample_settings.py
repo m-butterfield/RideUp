@@ -4,7 +4,7 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    ('Matt Butterfield', 'deneb150@gmail.com'),
+    ('Bob Smith', 'bob@aol.com'),
 )
 
 MANAGERS = ADMINS
@@ -13,8 +13,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'rideup',
-        'USER': 'matt',
-        'PASSWORD': 'matt',
+        'USER': 'bob',
+        'PASSWORD': 'password',
         'HOST': 'localhost',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
         'PORT': '',                      # Set to empty string for default.
     }
