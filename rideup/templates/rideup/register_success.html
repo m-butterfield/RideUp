@@ -1,0 +1,13 @@
+{% extends "rideup/base.html" %}
+
+{% block head %}
+<title>RideUp - Success!</title>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Success! Welcome to RideUp</h2>
+    Now go <a href="{% url 'create' %}">create a ride!</a>
+</div>
+
+{% endblock %}
