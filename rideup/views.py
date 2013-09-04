@@ -16,10 +16,10 @@ def index(request):
 def create(request):
     if request.method == 'POST':
         form = CreateRideForm(request.POST.copy())
-        time = form.data['ride_time'].split(':')
-        form.data['ride_time'] = timezone.now().replace(hour=int(time[0]),
-                                                        minute=int(time[1]),
-                                                        second=0)
+        time = form.data['ride_time']
+        day = form.data['ride_date']
+        print day + '-' + time
+        form.data['ride_time'] = datetime.strptime(day + '-' + time, '%Y-%m-%d-%H:%M')
         form.data['created_date'] = timezone.now()
         form.data['user'] = request.user.id
         if form.is_valid():
