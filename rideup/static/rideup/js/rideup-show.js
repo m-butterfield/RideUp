@@ -75,7 +75,7 @@ function initialize() {
                 };
                 for (var i = 0; i < response.length; i++) {
                     var position = new google.maps.LatLng(
-                        response[i].fields.lat, response[i].fields.lng)
+                        response[i].lat, response[i].lng)
                     var marker = new google.maps.Marker({
                         map: map,
                         icon: image,
@@ -84,10 +84,11 @@ function initialize() {
                     });
                     markers.push(marker);
                     $("#rides_list").append($('<li class="list-group-item">' +
-                            '<strong>' + response[i].fields.name + '</strong>' +
-                            '<p>' + response[i].fields.address + '</p>' +
-                            '<p>' + response[i].fields.ride_time + '</p>' +
-                            '<p>' + response[i].fields.description + '</p>' +
+                            '<strong>' + response[i].name + '</strong>' +
+                            '<p>' + response[i].address + '</p>' +
+                            '<p>' + response[i].ride_time + '</p>' +
+                            '<p>' + response[i].description + '</p>' +
+                            '<p>' + response[i].user + '</p>' +
                             '</li>'));
                 }
             }

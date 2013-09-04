@@ -4,10 +4,10 @@ from django.utils import timezone
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
-from django.core import serializers
+from django.contrib.auth.models import User
 from rideup.models import Ride, CreateRideForm
-
-import datetime, json
+from datetime import datetime
+import json
 
 def index(request):
     return render(request, 'rideup/index.html')
@@ -16,12 +16,17 @@ def index(request):
 def create(request):
     if request.method == 'POST':
         form = CreateRideForm(request.POST.copy())
+        time = form.data['ride_time'].split(':')
+        form.data['ride_time'] = timezone.now().replace(hour=int(time[0]),
+                                                        minute=int(time[1]),
+                                                        second=0)
         form.data['created_date'] = timezone.now()
-        form.data['ride_time'] = timezone.now() + datetime.timedelta(days=1)
+        form.data['user'] = request.user.id
         if form.is_valid():
             form.save()
             return HttpResponseRedirect('/showrides/')
         else:
+            print form
             return HttpResponseRedirect('')
     else:
         form = CreateRideForm()
@@ -47,8 +52,12 @@ def get_map_rides(request):
                 and lng > %s
             """ % (northeastLat, northeastLng, southwestLat, southwestLng)
 
-        response = serializers.serialize('json', Ride.objects.raw(qry))
-        response = json.loads(response)
+        response = []
+        for ride in Ride.objects.raw(qry):
+            response.append(dict(user=User.objects.get(pk=ride.user.id).username,
+                                 lat=str(ride.lat), lng=str(ride.lng), name=ride.name,
+                                 address=ride.address, description=ride.description,
+                                 ride_time=ride.ride_time.strftime("%b %-d, %-I:%M %p")))
 
         return HttpResponse(json.dumps(response),
                             mimetype='application/json')
