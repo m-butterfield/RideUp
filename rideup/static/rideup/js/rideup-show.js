@@ -84,11 +84,11 @@ function initialize() {
                     });
                     markers.push(marker);
                     $("#rides_list").append($('<li class="list-group-item">' +
-                            '<strong>' + response[i].name + '</strong>' +
-                            '<p>' + response[i].address + '</p>' +
-                            '<p>' + response[i].ride_time + '</p>' +
-                            '<p>' + response[i].description + '</p>' +
-                            '<p>' + response[i].user + '</p>' +
+                            '<strong>' + response[i].name + '</strong><br />' +
+                            '<strong>Ride time: </strong>' + response[i].ride_time + '<br />' +
+                            '<strong>Description: </strong>' + response[i].description + '<br />' +
+                            '<strong>User: </strong>' + response[i].user + '<br />' +
+                            '<strong>Address: </strong>' + response[i].address +
                             '</li>'));
                 }
             }
