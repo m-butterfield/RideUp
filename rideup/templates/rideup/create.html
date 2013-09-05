@@ -15,18 +15,18 @@
             <form action="{% url 'create' %}" method="post" id="create-form">
             {% csrf_token %}
                 <div class="form-group">
+                    <label class="control-label">Address:</label>
+                    <input type="text" id="id_address" name="address"
+                           placeholder="Search for an address"
+                           class="form-control">
+                    <input type="hidden" id="id_lat" name="lat">
+                    <input type="hidden" id="id_lng" name="lng">
+                </div>
+                <div class="form-group">
                     <label>Place name:</label>
                     <input type="text" id="id_name" name="name"
                            placeholder="Name of the place you want to meet"
-                           class="form-control" readonly>
-                </div>
-                <div class="form-group">
-                    <label class="control-label">Address:</label>
-                    <input type="text" id="id_address" name="address"
-                           placeholder="Use the searchbox on the map!"
-                           class="form-control" readonly>
-                    <input type="hidden" id="id_lat" name="lat">
-                    <input type="hidden" id="id_lng" name="lng">
+                           class="form-control">
                 </div>
                 <div class="form-group">
                     <label class="control-label">Ride date/time:</label>
@@ -45,9 +45,6 @@
         </div>
         <div class="col-md-8">
             <div id="map">
-                <div id="panel">
-                    <input id="target" type="text" placeholder="Search for a place to start your ride">
-                </div>
                 <div id="map_canvas"></div>
             </div>
         </div>
@@ -63,8 +60,20 @@
 <script type="text/javascript" src="{% static 'rideup/js/jquery-ui-timepicker-addon.min.js' %}"></script>
 <script>
     $(document).ready(function() {
-        $("#id_ride_time").datetimepicker();
         $("#create-link").parent().addClass('active');
+        $("#id_ride_time").datetimepicker({
+            minDateTime: new Date(),
+            dateFormat: "MM d yy",
+            timeFormat: "@ h:mm TT"
+        });
+        $("#id_ride_time").on("keypress", function () {
+            return false;
+        });
+        $("#id_address").on("keypress", function(key) {
+            if (key.which == 10 || key.which === 13) {
+                return false;
+            }
+        });
         $("#id_description").on("keypress", function(key) {
             if ((key.which == 10 || key.which === 13) && key.ctrlKey) {
                 $("#create-form").submit();

@@ -23,26 +23,3 @@ body {
     margin: 0 auto;
     margin-top:15px;
 }
-
-#panel {
-    position: absolute;
-    top: 9px;
-    left: 50%;
-    margin-left: -180px;
-    z-index: 1;
-    background-color: #fff;
-    padding: 3px;
-    border: 1px solid #999;
-}
-
-#panel input {
-    outline: none;
-    border:none !important;
-    box-shadow:none !important;
-    margin-bottom: 0px;
-}
-
-#target {
-    width: 345px;
-    height: 1.5em;
-}

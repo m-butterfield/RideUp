@@ -15,7 +15,8 @@ def index(request):
 def create(request):
     if request.method == 'POST':
         form = CreateRideForm(request.POST.copy())
-        ride_time = datetime.strptime(form.data['ride_time'], '%m/%d/%Y %H:%M')
+        "September 5 2013 @ 12:48 AM"
+        ride_time = datetime.strptime(form.data['ride_time'], '%B %d %Y @ %I:%M %p')
         form.data['ride_time'] = ride_time
         form.data['created_date'] = datetime.now()
         form.data['user'] = request.user.id
