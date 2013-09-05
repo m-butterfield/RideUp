@@ -3,6 +3,8 @@
 
 {% block head %}
 <title>RideUp - Create a ride</title>
+<link rel="stylesheet" href="{% static 'rideup/css/jquery-ui-1.10.3.custom.min.css' %}" type="text/css" />
+<link rel="stylesheet" href="{% static 'rideup/css/jquery-ui-timepicker-addon.min.css' %}" type="text/css" />
 {% endblock %}
 
 {% block content %}
@@ -27,13 +29,8 @@
                     <input type="hidden" id="id_lng" name="lng">
                 </div>
                 <div class="form-group">
-                    <label class="control-label">Ride date:</label>
-                    <input type="date" id="id_ride_date" name="ride_date"
-                           class="form-control" required>
-                </div>
-                <div class="form-group">
-                    <label class="control-label">Ride time:</label>
-                    <input type="time" id="id_ride_time" name="ride_time"
+                    <label class="control-label">Ride date/time:</label>
+                    <input type="text" id="id_ride_time" name="ride_time"
                            class="form-control" required>
                 </div>
                 <div class="form-group">
@@ -60,8 +57,13 @@
 {% endblock %}
 
 {% block foot %}
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHu3tscS1tG243nstn6jiAS9L2kD1OwtQ&libraries=places&sensor=false"></script>
+<script type="text/javascript" src="{% static 'rideup/js/rideup-create.js' %}"></script>
+<script type="text/javascript" src="{% static 'rideup/js/jquery-ui-1.10.3.custom.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'rideup/js/jquery-ui-timepicker-addon.min.js' %}"></script>
 <script>
     $(document).ready(function() {
+        $("#id_ride_time").datetimepicker();
         $("#create-link").parent().addClass('active');
         $("#id_description").on("keypress", function(key) {
             if ((key.which == 10 || key.which === 13) && key.ctrlKey) {
@@ -70,6 +72,4 @@
         });
     });
 </script>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHu3tscS1tG243nstn6jiAS9L2kD1OwtQ&libraries=places&sensor=false"></script>
-<script type="text/javascript" src="{% static 'rideup/js/rideup-create.js' %}"></script>
 {% endblock %}
