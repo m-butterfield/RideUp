@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
-from django.utils import timezone
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
@@ -16,16 +15,14 @@ def index(request):
 def create(request):
     if request.method == 'POST':
         form = CreateRideForm(request.POST.copy())
-        ride_time = form.data['ride_time']
-        print ride_time
-        form.data['ride_time'] = datetime.strptime(ride_time, '%m/%d/%Y %H:%M')
-        form.data['created_date'] = timezone.now()
+        ride_time = datetime.strptime(form.data['ride_time'], '%m/%d/%Y %H:%M')
+        form.data['ride_time'] = ride_time
+        form.data['created_date'] = datetime.now()
         form.data['user'] = request.user.id
         if form.is_valid():
             form.save()
             return HttpResponseRedirect('/showrides/')
         else:
-            print form
             return HttpResponseRedirect('')
     else:
         form = CreateRideForm()
