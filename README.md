@@ -1,8 +1,9 @@
 RideUp
 ======
  A webapp that helps bike riders meet up to ride
+ See it in action here: [http://rideup.mattbutterfield.com](rideup.mattbutterfield.com)
 
-**Setup for Linux:**  
+**Setup for Linux:**
 First, make sure PostgreSQL, Python2.7, and Virtualenv are installed, then:
 
     $ git clone git@github.com:m-butterfield/RideUp.git
@@ -12,7 +13,7 @@ First, make sure PostgreSQL, Python2.7, and Virtualenv are installed, then:
     $ cp rideup_site/sample_settings.py rideup_site/settings.py
     $ createdb rideup
 
-At this point, make sure you have a postgres username and password setup with full access to the rideup database you just created.  
+At this point, make sure you have a postgres username and password setup with full access to the rideup database you just created.
 Edit the 'rideup_site/settings.py' file.  Change the 'user' and 'password' settings in the DATABASES section accordingly.  Then run:
 
     $ python manage.py syncdb
