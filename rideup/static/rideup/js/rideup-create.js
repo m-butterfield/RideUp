@@ -1,10 +1,11 @@
-var initialLocation;
-var cleveland = new google.maps.LatLng(41.49917035057174, -81.69371168017138);
-var browserSupportFlag = new Boolean();
-var map;
-
 function initialize() {
     google.maps.visualRefresh = true;
+
+    var initialLocation,
+        cleveland = new google.maps.LatLng(41.49917035057174, -81.69371168017138),
+        browserSupportFlag = new Boolean(),
+        map;
+
     var mapOptions = {
         zoom: 14,
         mapTypeId: google.maps.MapTypeId.ROADMAP,
@@ -19,7 +20,9 @@ function initialize() {
         navigator.geolocation.getCurrentPosition(function(position) {
             initialLocation = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
             map.setCenter(initialLocation);
-            }, function() { handleNoGeolocation(browserSupportFlag);
+            },
+            function() {
+                handleNoGeolocation(browserSupportFlag);
         });
      }
 
@@ -43,9 +46,9 @@ function initialize() {
     var bikeLayer = new google.maps.BicyclingLayer();
     bikeLayer.setMap(map);
 
-    var input = /** @type {HTMLInputElement} */(document.getElementById('id_address'));
-    var searchBox = new google.maps.places.SearchBox(input);
-    var markers = [];
+    var input = /** @type {HTMLInputElement} */(document.getElementById('id_address')),
+        searchBox = new google.maps.places.SearchBox(input),
+        markers = [];
 
     google.maps.event.addListener(searchBox, 'places_changed', function() {
 
