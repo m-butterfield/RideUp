@@ -1,7 +1,7 @@
 RideUp
 ======
  A webapp that helps bike riders meet up to ride  
- See it in action here: [http://rideup.mattbutterfield.com](rideup.mattbutterfield.com)
+ See it in action here: [rideup.mattbutterfield.com](http://rideup.mattbutterfield.com)
 
 **Setup for Linux:**  
 First, make sure PostgreSQL, Python2.7, and Virtualenv are installed, then:
