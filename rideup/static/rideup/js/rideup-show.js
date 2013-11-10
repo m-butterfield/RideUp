@@ -12,7 +12,7 @@ function initialize() {
         streetViewControl: false
     };
 
-    map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
+    var map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
 
     // Try W3C Geolocation (Preferred)
     if (navigator.geolocation) {
@@ -48,7 +48,18 @@ function initialize() {
 
     var markers = [];
 
-    google.maps.event.addListener(map, 'tilesloaded', function() {
+    var image = {
+        url: '/static/rideup/img/green-bike.gif',
+        size: new google.maps.Size(70, 70),
+        origin: new google.maps.Point(0, 0),
+        anchor: new google.maps.Point(35, 70),
+        scaledSize: new google.maps.Size(70, 70)
+    };
+
+    google.maps.event.addListener(map, 'idle', function() {
+        if (!map.getBounds()) {
+            return;
+        }
         var data = {
             northeastLat: map.getBounds().getNorthEast().lat(),
             northeastLng: map.getBounds().getNorthEast().lng(),
@@ -58,43 +69,36 @@ function initialize() {
         $.ajax({
             url: mapRidesUrl,
             data: data
-        }).done(function(response) {
-            for (var i = 0, marker; marker = markers[i]; i++) {
+        }).done(function(rides) {
+            markers.forEach(function(marker) {
                 marker.setMap(null);
-            }
+            });
             markers = [];
             $("#rides_list").empty();
-            if (!response.length) {
+            if (!rides.length) {
                 $("#rides_list").append($('<li>No Rides found within map! ' +
                     'Keep looking around or go <a href="' + mapRidesUrl +
                     '">create a ride!</a></li>'));
-            } else {
-                var image = {
-                    url: '/static/rideup/img/green-bike.gif',
-                    size: new google.maps.Size(70, 70),
-                    origin: new google.maps.Point(0, 0),
-                    anchor: new google.maps.Point(35, 70),
-                    scaledSize: new google.maps.Size(70, 70)
-                };
-                for (var i = 0; i < response.length; i++) {
-                    var position = new google.maps.LatLng(
-                        response[i].lat, response[i].lng)
-                    var marker = new google.maps.Marker({
-                        map: map,
-                        icon: image,
-                        title: "title",
-                        position: position
-                    });
-                    markers.push(marker);
-                    $("#rides_list").append($('<li class="list-group-item">' +
-                            '<strong>' + response[i].name + '</strong><br />' +
-                            '<strong>Ride time: </strong>' + response[i].ride_time + '<br />' +
-                            '<strong>Description: </strong>' + response[i].description + '<br />' +
-                            '<strong>User: </strong>' + response[i].user + '<br />' +
-                            '<strong>Address: </strong>' + response[i].address +
-                            '</li>'));
-                }
+                return;
             }
+            rides.forEach(function(ride) {
+                var position = new google.maps.LatLng(
+                    ride.lat, ride.lng)
+                var marker = new google.maps.Marker({
+                    map: map,
+                    icon: image,
+                    title: "title",
+                    position: position
+                });
+                markers.push(marker);
+                $("#rides_list").append($('<li class="list-group-item">' +
+                    '<strong>' + ride.name + '</strong><br />' +
+                    '<strong>Ride time: </strong>' + ride.ride_time + '<br />' +
+                    '<strong>Description: </strong>' + ride.description + '<br />' +
+                    '<strong>User: </strong>' + ride.user + '<br />' +
+                    '<strong>Address: </strong>' + ride.address +
+                    '</li>'));
+            });
         });
     });
 }
