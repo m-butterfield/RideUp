@@ -48,14 +48,20 @@ def get_map_rides(request):
                 and lng > %s
             """ % (northeastLat, northeastLng, southwestLat, southwestLng)
 
-        response = []
+        ride_ids = []
+        ride_list = []
         for ride in Ride.objects.raw(qry):
-            response.append(dict(user=User.objects.get(pk=ride.user.id).username,
+            ride_list.append(dict(user=User.objects.get(pk=ride.user.id).username,
                                  lat=str(ride.lat), lng=str(ride.lng), name=ride.name,
                                  address=ride.address, description=ride.description,
-                                 ride_time=ride.ride_time.strftime("%b %-d, %-I:%M %p")))
+                                 ride_time=ride.ride_time.strftime("%b %-d, %-I:%M %p"),
+                                 ride_id=ride.id))
+            ride_ids.append(ride.id)
 
-        return HttpResponse(json.dumps(response),
+        response_dict = dict(rideIDs=ride_ids,
+                             rideList=ride_list)
+
+        return HttpResponse(json.dumps(response_dict),
                             mimetype='application/json')
     else:
         return HttpResponse()

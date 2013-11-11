@@ -69,29 +69,44 @@ function initialize() {
         $.ajax({
             url: mapRidesUrl,
             data: data
-        }).done(function(rides) {
-            markers.forEach(function(marker) {
-                marker.setMap(null);
-            });
-            markers = [];
+        }).done(function(response) {
+            var rides = response.rideList,
+                rideIDs = response.rideIDs;
             $("#rides_list").empty();
             if (!rides.length) {
                 $("#rides_list").append($('<li>No Rides found within map! ' +
                     'Keep looking around or go <a href="' + mapRidesUrl +
                     '">create a ride!</a></li>'));
+                markers.forEach(function(marker) {
+                    marker.setMap(null);
+                });
+                markers.length = 0;
                 return;
             }
+            var markersCopy = markers.slice(),
+                existingRideMarkerIDs = [];
+            markersCopy.forEach(function(marker) {
+                if (rideIDs.indexOf(marker.ride_id) === -1) {
+                    marker.setMap(null);
+                    markers.splice(markers.indexOf(marker), 1);
+                } else {
+                    existingRideMarkerIDs.push(marker.ride_id);
+                }
+            });
             rides.forEach(function(ride) {
-                var position = new google.maps.LatLng(
-                    ride.lat, ride.lng)
-                var marker = new google.maps.Marker({
-                    map: map,
-                    icon: image,
-                    title: "title",
-                    position: position
-                });
-                markers.push(marker);
-                $("#rides_list").append($('<li class="list-group-item">' +
+                if (existingRideMarkerIDs.indexOf(ride.ride_id) === -1) {
+                    var position = new google.maps.LatLng(ride.lat, ride.lng)
+                    var marker = new google.maps.Marker({
+                        ride_id: ride.ride_id,
+                        map: map,
+                        icon: image,
+                        title: "title",
+                        position: position
+                    });
+                    markers.push(marker);
+                }
+                $("#rides_list").append($('<li class="list-group-item rides-list-item" ' +
+                    'ride_id="' + ride.ride_id + '" >' +
                     '<strong>' + ride.name + '</strong><br />' +
                     '<strong>Ride time: </strong>' + ride.ride_time + '<br />' +
                     '<strong>Description: </strong>' + ride.description + '<br />' +
@@ -104,3 +119,4 @@ function initialize() {
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
+
