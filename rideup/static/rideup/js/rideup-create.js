@@ -2,7 +2,7 @@ function initialize() {
     google.maps.visualRefresh = true;
 
     var initialLocation,
-        cleveland = new google.maps.LatLng(41.49917035057174, -81.69371168017138),
+        nyc = new google.maps.LatLng(40.764799, -73.973062),
         browserSupportFlag = new Boolean(),
         map;
 
@@ -35,10 +35,10 @@ function initialize() {
     function handleNoGeolocation(errorFlag) {
         if (errorFlag == true) {
             console.log("Geolocation service failed.");
-            initialLocation = cleveland;
+            initialLocation = nyc;
         }
         else {
-            initialLocation = cleveland;
+            initialLocation = nyc;
         }
         map.setCenter(initialLocation);
     }
